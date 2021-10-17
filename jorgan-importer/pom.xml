@@ -8,4 +8,31 @@
   <artifactId>importer</artifactId>
   <name>jOrgan Importer</name>
   <description>${project.name}</description>
+	<dependencies>
+		<dependency>
+			<groupId>bias</groupId>
+			<artifactId>bias</artifactId>
+			<version>0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.kxml</groupId>
+			<artifactId>kxml2-min</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.15</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>gui</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

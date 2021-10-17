@@ -8,4 +8,16 @@
   <artifactId>linuxsampler</artifactId>
   <name>jOrgan Linux Sampler</name>
   <description>${project.name}</description>
+	<dependencies>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>gui</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

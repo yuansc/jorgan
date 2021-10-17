@@ -8,4 +8,25 @@
   <artifactId>creative</artifactId>
   <name>jOrgan Creative Lab Interface</name>
   <description>${project.name}</description>
+	<dependencies>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>gui</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>importer</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
 </project>

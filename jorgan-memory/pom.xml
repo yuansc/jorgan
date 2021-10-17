@@ -8,4 +8,26 @@
   <artifactId>memory</artifactId>
   <name>jOrgan Memory</name>
   <description>${project.name}</description>
+	<dependencies>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>exporter</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>gui</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jorgan</groupId>
+			<artifactId>lcd</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>
