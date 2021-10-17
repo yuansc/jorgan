@@ -1,1 +1,6 @@
 */target
+/target/
+# Eclipse IDE paths
+.settings
+.project
+.classpath

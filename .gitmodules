@@ -1,0 +1,8 @@
+[submodule "spin"]
+	path = spin
+	url = https://github.com/yuansc/jorgin-spin.git
+        branch = develop
+[submodule "swingx"]
+	path = swingx
+	url = https://github.com/yuansc/jorgan-swingx
+	branch = develop

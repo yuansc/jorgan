@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jorgan</groupId>
+	<artifactId>jorgan-parent</artifactId>
+	<version>4.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>jOrgan</name>
+	<description>jOrgan is a highly-developed computer program written by Sven Meier, designed to enable users to create or to play Virtual Pipe Organs of high quality. </description>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License</name>
+			<url>http://www.gnu.org/copyleft/lesser.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<properties>
+		<jorgan.version>${project.version}</jorgan.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
+	<modules>
+		<module>bias</module>
+		<module>jorgan</module>
+		<module>jorgan-bootstrap</module>
+		<module>jorgan-bundle</module>
+		<module>jorgan-core</module>
+		<module>jorgan-creative</module>
+		<module>jorgan-customizer</module>
+		<module>jorgan-executor</module>
+		<module>jorgan-exporter</module>
+		<module>jorgan-fluidsynth</module>
+		<module>jorgan-graph</module>
+		<module>jorgan-gui</module>
+		<module>jorgan-importer</module>
+		<module>jorgan-installer</module>
+		<module>jorgan-jni</module>
+		<module>jorgan-keyboard</module>
+		<module>jorgan-lan</module>
+		<module>jorgan-lcd</module>
+		<module>jorgan-libs</module>
+		<module>jorgan-linuxsampler</module>
+		<module>jorgan-memory</module>
+		<module>jorgan-midimerger</module>
+		<module>jorgan-package</module>
+		<module>jorgan-recorder</module>
+		<module>jorgan-sams</module>
+		<module>jorgan-skins</module>
+		<module>jorgan-soundfont</module>
+		<module>jorgan-tools</module>
+		<module>spin</module>
+		<module>swingx</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.kxml</groupId>
+				<artifactId>kxml2-min</artifactId>
+				<version>2.3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.15</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<index>true</index>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
