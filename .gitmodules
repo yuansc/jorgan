@@ -6,3 +6,7 @@
 	path = swingx
 	url = https://github.com/yuansc/jorgan-swingx
 	branch = develop
+[submodule "awesfx"]
+	path = awesfx
+	url = git@github.com:yuansc/awesfx.git
+	branch = debian/0.5.2-1
