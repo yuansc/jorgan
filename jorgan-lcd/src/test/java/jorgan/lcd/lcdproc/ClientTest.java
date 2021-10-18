@@ -30,7 +30,7 @@ public class ClientTest extends TestCase {
 		Screen screen5 = client.addScreen();
 		IconWidget icon = new IconWidget(screen5, 2, 2);
 
-		while (true) {
+		for (int i = 0; i < 10; i++) {
 			num.value((int) (Math.random() * 10));
 
 			hbar.value(Math.random());

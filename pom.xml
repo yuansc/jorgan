@@ -21,6 +21,11 @@
 		<jorgan.version>${project.version}</jorgan.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<native.builddir>${project.build.directory}/native</native.builddir>
+		<jni.cc>cl</jni.cc>
+		<jni.packaging>dll</jni.packaging>
+		<jni.include>/usr/lib/jvm/default-java/include</jni.include>
+		<jni.include.platform>${jni.include}/platform</jni.include.platform>
 	</properties>
 
 	<modules>
@@ -74,6 +79,11 @@
 				<artifactId>xstream</artifactId>
 				<version>1.4.15</version>
 			</dependency>
+			<dependency>
+				<groupId>org.jaudiolibs</groupId>
+				<artifactId>jnajack</artifactId>
+				<version>1.4.0</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -95,4 +105,25 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>linux-ubuntu</id>
+			<activation>
+				<os>
+					<name>linux</name>
+				</os>
+				<property>
+					<name>java.vendor</name>
+					<value>Ubuntu</value>
+				</property>
+			</activation>
+			<properties>
+				<jni.cc>gcc</jni.cc>
+				<jni.packaging>so</jni.packaging>
+				<jni.include>/usr/lib/jvm/default-java/include</jni.include>
+				<jni.include.platform>${jni.include}/linux</jni.include.platform>
+			</properties>
+		</profile>
+	</profiles>
 </project>

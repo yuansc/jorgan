@@ -1,13 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>jorgan</groupId>
-    <artifactId>jorgan-parent</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>creative</artifactId>
-  <name>jOrgan Creative Lab Interface</name>
-  <description>${project.name}</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>jorgan</groupId>
+		<artifactId>jorgan-parent</artifactId>
+		<version>4.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>creative</artifactId>
+	<name>jOrgan Creative Lab Interface</name>
+	<description>${project.name}</description>
 	<dependencies>
 		<dependency>
 			<groupId>jorgan</groupId>
@@ -29,4 +31,100 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<jdkToolchain>
+						<version>11</version>
+					</jdkToolchain>
+					<compileSourceRoots>
+						<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
+					</compileSourceRoots>
+					<fork>true</fork>
+					<compilerArgs>
+						<arg>-h</arg>
+						<arg>${native.builddir}</arg>
+					</compilerArgs>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>prepare-awesfx</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>./configure</executable>
+							<workingDirectory>${basedir}/../awesfx</workingDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>jni-compile-link</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${jni.cc}</executable>
+							<workingDirectory>${basedir}</workingDirectory>
+							<arguments>
+								<argument>-std=c99</argument>
+								<argument>-Dlinux</argument>
+								<argument>-I${jni.include}</argument>
+								<argument>-I${jni.include}/linux</argument>
+								<argument>-I../awesfx/include</argument>
+								<argument>-I../jorgan-jni/src/main/native</argument>
+								<argument>-I./src/main/native/linux</argument>
+								<argument>-I${native.builddir}</argument>
+								<argument>-Wall</argument>
+								<argument>-fPIC</argument>
+								<argument>-shared</argument>
+								<argument>../awesfx/awelib/awe_parm.c</argument>
+								<argument>../awesfx/awelib/bool.c</argument>
+								<argument>../awesfx/awelib/cmpopen.c</argument>
+								<argument>../awesfx/awelib/dummy.c</argument>
+								<argument>../awesfx/awelib/dynload.c</argument>
+								<argument>../awesfx/awelib/fskip.c</argument>
+								<argument>../awesfx/awelib/gentxt.c</argument>
+								<argument>../awesfx/awelib/loadbank.c</argument>
+								<argument>../awesfx/awelib/loadtext.c</argument>
+								<argument>../awesfx/awelib/malloc.c</argument>
+								<argument>../awesfx/awelib/optfile.c</argument>
+								<argument>../awesfx/awelib/parsesf.c</argument>
+								<argument>../awesfx/awelib/path.c</argument>
+								<argument>../awesfx/awelib/sample.c</argument>
+								<argument>../awesfx/awelib/sbkconv.c</argument>
+								<argument>../awesfx/awelib/sffile.c</argument>
+								<argument>../awesfx/awelib/sfitem.c</argument>
+								<argument>../awesfx/awelib/sfopts.c</argument>
+								<argument>../awesfx/awelib/sfout.c</argument>
+								<argument>../awesfx/awelib/slist.c</argument>
+								<argument>../jorgan-jni/src/main/native/exception.c</argument>
+								<argument>../jorgan-jni/src/main/native/logging.c</argument>
+								<argument>./src/main/native/linux/emux.c</argument>
+								<argument>./src/main/native/linux/creativeJNI.c</argument>
+								<argument>-Wl,-lasound</argument>
+								<argument>-o</argument>
+								<argument>${native.builddir}/libcreativeJNI.so</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
