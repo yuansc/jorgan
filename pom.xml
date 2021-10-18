@@ -8,6 +8,10 @@
 	<packaging>pom</packaging>
 	<name>jOrgan</name>
 	<description>jOrgan is a highly-developed computer program written by Sven Meier, designed to enable users to create or to play Virtual Pipe Organs of high quality. </description>
+	<organization>
+		<name>Sven Meier</name>
+		<url>https://jorgan.info/base/Index.html</url>
+	</organization>
 
 	<licenses>
 		<license>
@@ -93,12 +97,22 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.2.0</version>
 					<configuration>
 						<archive>
 							<index>true</index>
 							<manifest>
-								<addClasspath>true</addClasspath>
+								<addDefaultEntries>true</addDefaultEntries>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 							</manifest>
+							<manifestEntries>
+								<Implementation-Title>jOrgan</Implementation-Title>
+								<Specification-Title>jOrgan</Specification-Title>
+								<Package-Title>jOrganYYC</Package-Title>
+								<Package-Version>${jorgan.version}</Package-Version>
+								<Package-Vendor>Scott Ling-Hsiung Yuan</Package-Vendor>
+							</manifestEntries>
 						</archive>
 					</configuration>
 				</plugin>
