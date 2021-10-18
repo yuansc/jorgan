@@ -8,5 +8,5 @@
 	branch = develop
 [submodule "awesfx"]
 	path = awesfx
-	url = https://salsa.debian.org/multimedia-team/awesfx.git
-	branch = debian/0.5.2-1
+	url = git@github.com:yuansc/awesfx.git
+	branch = feature/jorgan-0.5.2
