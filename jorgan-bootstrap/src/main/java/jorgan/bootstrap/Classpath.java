@@ -42,11 +42,12 @@ public class Classpath {
 
 		File directory = ClassUtils.getDirectory(getClass());
 		File file = new File(directory, path);
+		System.out.println( file.toURI().toURL() + ":" + file.exists() );
 		if (file.exists()) {
 			File[] files = file.listFiles();
 			for (int i = 0; i < files.length; i++) {
-				System.out.println(files[i].toURI().toURL());
 				urls.add(files[i].toURI().toURL());
+				System.out.println( files[i].toURI().toURL() );
 			}
 		}
 

@@ -75,6 +75,7 @@ public class App {
 	public static void main(String[] args) {
 		ConfigurationRegistry.init();
 
+		System.out.println("Here2");
 		ArgsParser parser = new ArgsParser("java -jar jOrgan.jar",
 				"[disposition]", OptionRegistry.getOptions());
 		parser.addOption(parser.new HelpOption());
@@ -83,6 +84,7 @@ public class App {
 		try {
 			operands = parser.parse(args);
 		} catch (CLIException ex) {
+			System.out.println("Here3");
 			ex.write();
 			System.exit(1);
 		}
@@ -95,6 +97,7 @@ public class App {
 			System.exit(1);
 		}
 
+		System.out.println("Here4");
 		new Version().log();
 
 		configuration.read(new App()).start(file);

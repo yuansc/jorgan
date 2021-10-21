@@ -21,6 +21,8 @@ package jorgan.bootstrap;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.security.CodeSource;
+import java.io.File;
 
 import jorgan.App;
 
@@ -35,7 +37,7 @@ public class Bootstrap {
 		try {
 			new Logging();
 			new Exceptions(logger);
-			new Classpath("lib");
+			new Classpath( "lib" );
 			new Main("jorgan.App", args);
 		} catch (Throwable t) {
 			logger.log(Level.SEVERE, "bootstrapping failed", t);
@@ -43,7 +45,6 @@ public class Bootstrap {
 	}
 
 	public static void main(final String[] args) {
-
 		Bootstrap bootstrap = new Bootstrap();
 		bootstrap.start(args);
 	}

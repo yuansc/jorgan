@@ -25,9 +25,11 @@ import java.lang.reflect.Method;
 public class Main {
 
 	public Main(String clazz, String[] args) throws Exception {
+		System.out.println("Here1");
 		Method method = Thread.currentThread().getContextClassLoader()
 				.loadClass(clazz).getMethod("main",
 						new Class[] { String[].class });
+		System.out.println( method );
 		method.invoke(null, new Object[] { args });
 	}
 }
