@@ -11,12 +11,6 @@
 	<name>jOrgan External Libraries</name>
 	<description>${project.name}</description>
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java/META-INF/services</directory>
-				<targetPath>META-INF/services</targetPath>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

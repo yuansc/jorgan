@@ -32,12 +32,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java/META-INF/services</directory>
-				<targetPath>META-INF/services</targetPath>
-			</resource>
-		</resources>
-	</build>
 </project>
