@@ -7,7 +7,7 @@
 		<artifactId>jorgan-parent</artifactId>
 		<version>4.0.0-SNAPSHOT</version>
 	</parent>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<artifactId>package</artifactId>
 	<name>jOrgan Package Builder (Debian)</name>
 	<description>${project.name}</description>

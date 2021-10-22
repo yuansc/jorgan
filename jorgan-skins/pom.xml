@@ -7,18 +7,24 @@
 		<artifactId>jorgan-parent</artifactId>
 		<version>4.0.0-SNAPSHOT</version>
 	</parent>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<artifactId>skins</artifactId>
 	<name>jOrgan Skins</name>
 	<description>${project.name}</description>
 	<build>
 		<plugins>
 			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<classesDirectory>${project.build.directory}/skins</classesDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.0.0</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<phase>compile</phase>
 						<configuration>
 							<target>
 								<zip destfile="${project.build.directory}/skins/classic.zip">

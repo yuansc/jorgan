@@ -59,9 +59,6 @@
 				<configuration>
 					<executable>jar</executable>
 					<workingDirectory>${project.build.directory}/classes</workingDirectory>
-					<!-- optional <workingDirectory>/tmp</workingDirectory> <arguments> 
-						<argument>-X</argument> <argument>myproject:dist</argument> </arguments> 
-						<environmentVariables> <LANG>en_US</LANG> </environmentVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>
