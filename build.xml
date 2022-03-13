@@ -7,9 +7,13 @@
     <ant dir="jorgan-exporter"/>
     <ant dir="jorgan-importer"/>
     <ant dir="jorgan-customizer"/>
+    <!--
     <ant dir="jorgan-creative"/>
+    -->
     <ant dir="jorgan-executor"/>
+    <!--
     <ant dir="jorgan-fluidsynth"/>
+    -->
     <ant dir="jorgan-keyboard"/>
     <ant dir="jorgan-lan"/>
     <ant dir="jorgan-lcd"/>
