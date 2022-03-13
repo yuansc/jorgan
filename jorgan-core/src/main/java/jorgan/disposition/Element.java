@@ -715,4 +715,21 @@ public abstract class Element implements Cloneable {
 			listener.indexedPropertyChanged(Element.this, REFERENCE, reference);
 		}
 	}
+
+	public class CaptorCombinationChange implements Change {
+
+		protected Element combination;
+
+		public CaptorCombinationChange(Element combination) {
+			this.combination = combination;
+		}
+
+		public Element getCombination() {
+			return combination;
+		}
+
+		public void notify(OrganListener listener) {
+			listener.propertyChanged(Element.this, getName());
+		}
+	}
 }

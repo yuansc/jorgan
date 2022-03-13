@@ -27,9 +27,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import bias.Configuration;
 import jorgan.Version;
-import jorgan.disposition.Organ;
+import jorgan.disposition.Element.CaptorCombinationChange;
 import jorgan.disposition.Element.FastPropertyChange;
+import jorgan.disposition.Organ;
 import jorgan.disposition.event.Change;
 import jorgan.disposition.event.OrganObserver;
 import jorgan.disposition.spi.ElementRegistry;
@@ -37,7 +39,6 @@ import jorgan.io.DispositionStream;
 import jorgan.io.disposition.Backup;
 import jorgan.session.spi.SessionRegistry;
 import jorgan.util.ShutdownHook;
-import bias.Configuration;
 
 /**
  * A session of interaction with an {@link Organ}.
@@ -90,6 +91,24 @@ public class OrganSession {
 					if (((FastPropertyChange) change).isDerived()) {
 						// don't mark modified for derived changes
 						return;
+					}
+				}
+
+				if (change instanceof CaptorCombinationChange) {
+					logger.info("Combination " + ((CaptorCombinationChange) change).getCombination().getName()
+							+ " detected.");
+					for (SessionListener listener : listeners) {
+						// TODO: Not a very good approach but a temporary workaround
+						// for instanceof MemorySessionProvider not working issue.
+						if (listener.toString().indexOf("MemorySessionProvider") > 0) {
+							try {
+								logger.info("Saving memeory settings to disk.");
+								listener.saved(getFile());
+								logger.info("Memeory settings saved.");
+							} catch (Exception e) {
+								logger.info("Failed to save memory settings to disk. [" + e.getMessage() + "]");
+							}
+						}
 					}
 				}
 

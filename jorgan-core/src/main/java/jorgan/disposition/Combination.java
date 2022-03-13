@@ -94,6 +94,8 @@ public class Combination extends Switch {
 
 			fireChange(new FastReferenceChange(reference));
 		}
+
+		fireChange(new CaptorCombinationChange(this));
 	}
 
 	public boolean isRecalling() {
