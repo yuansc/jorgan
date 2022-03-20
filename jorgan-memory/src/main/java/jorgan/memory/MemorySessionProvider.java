@@ -70,7 +70,7 @@ public class MemorySessionProvider implements SessionProvider, SessionListener,
 
 	@Override
 	public String getListnerName() {
-		return "MemeorySessionProvider";
+		return "MemorySessionProvider";
 	}
 
 	@Override

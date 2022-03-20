@@ -98,8 +98,8 @@ public class OrganSession {
 					logger.info("Combination " + ((CaptorCombinationChange) change).getCombination().getName()
 							+ " detected.");
 					for (SessionListener listener : listeners) {
-						if ( listener instanceof NamedSessionListener &&
-							"MemeoryServiceProvider".equals(((NamedSessionListener)listener).getListnerName() ) ) {
+						if ( listener instanceof NamedSessionListener && 
+								"MemorySessionProvider".equals( ((NamedSessionListener)listener).getListnerName() ) ) {
 							try {
 								logger.info("Saving memeory settings to disk.");
 								listener.saved(getFile());
