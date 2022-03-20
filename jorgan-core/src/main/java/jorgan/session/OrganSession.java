@@ -110,8 +110,9 @@ public class OrganSession {
 							}
 						}
 					}
+					// don't mark modified for memory changes as it's already saved.
+					return;
 				}
-
 				markModified();
 			}
 		});
