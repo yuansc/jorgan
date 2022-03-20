@@ -22,23 +22,29 @@ import java.io.File;
 import java.io.IOException;
 
 import jorgan.problem.ElementProblems;
+import jorgan.session.NamedSessionListener;
 import jorgan.session.OrganSession;
 import jorgan.session.SessionListener;
 import jorgan.session.spi.SessionProvider;
 
-public class MemorySessionProvider implements SessionProvider {
+public class MemorySessionProvider implements SessionProvider, SessionListener,
+		NamedSessionListener {
+
+	Storage storage;
 
 	/**
 	 * {@link Storage} is always required.
 	 */
+	@Override
 	public void init(OrganSession session) {
 		session.lookup(Storage.class);
 	}
 
+	@Override
 	public Object create(final OrganSession session, Class<?> clazz) {
 		if (clazz == Storage.class) {
-			final Storage storage = new Storage(session.getOrgan(), session
-					.lookup(ElementProblems.class)) {
+			storage = new Storage(session.getOrgan(),
+					session.lookup(ElementProblems.class)) {
 				@Override
 				protected File resolve(String name) {
 					return session.resolve(name);
@@ -56,24 +62,33 @@ public class MemorySessionProvider implements SessionProvider {
 					session.markModified();
 				}
 			};
-			session.addListener(new SessionListener() {
-				public void constructingChanged(boolean constructing) {
-				}
-
-				public void modified() {
-				}
-
-				public void saved(File file) throws IOException {
-					if (storage.isLoaded()) {
-						storage.save();
-					}
-				}
-
-				public void destroyed() {
-				}
-			});
+			session.addListener(this);
 			return storage;
 		}
 		return null;
+	}
+
+	@Override
+	public String getListnerName() {
+		return "MemeorySessionProvider";
+	}
+
+	@Override
+	public void constructingChanged(boolean constructing) {
+	}
+
+	@Override
+	public void modified() {
+	}
+
+	@Override
+	public void saved(File file) throws IOException {
+		if (storage.isLoaded()) {
+			storage.save();
+		}
+	}
+
+	@Override
+	public void destroyed() {
 	}
 }

@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import bias.Configuration;
 import jorgan.Version;
 import jorgan.disposition.Element.CaptorCombinationChange;
 import jorgan.disposition.Element.FastPropertyChange;
@@ -39,6 +38,7 @@ import jorgan.io.DispositionStream;
 import jorgan.io.disposition.Backup;
 import jorgan.session.spi.SessionRegistry;
 import jorgan.util.ShutdownHook;
+import bias.Configuration;
 
 /**
  * A session of interaction with an {@link Organ}.
@@ -98,9 +98,8 @@ public class OrganSession {
 					logger.info("Combination " + ((CaptorCombinationChange) change).getCombination().getName()
 							+ " detected.");
 					for (SessionListener listener : listeners) {
-						// TODO: Not a very good approach but a temporary workaround
-						// for instanceof MemorySessionProvider not working issue.
-						if (listener.toString().indexOf("MemorySessionProvider") > 0) {
+						if ( listener instanceof NamedSessionListener &&
+							"MemeoryServiceProvider".equals(((NamedSessionListener)listener).getListnerName() ) ) {
 							try {
 								logger.info("Saving memeory settings to disk.");
 								listener.saved(getFile());
